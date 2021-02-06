@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   /*use set so that you get unique devices*/
   Set<ScanResult> listScannedDevice = Set<ScanResult>();
-
+  /*commitng */
   /*default value when a device is discovered*/
   String connectStatus = "CONNECT";
 
