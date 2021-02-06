@@ -1,6 +1,8 @@
+import 'package:bleApp2/scanpage.dart';
 import 'package:flutter/material.dart';
 
 import 'Toggleswitch.dart';
+import 'fb.dart';
 
 class Homepage extends StatefulWidget {
   @override
@@ -16,7 +18,11 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        children: [Toggleswitch()],
+        children: [
+          //Toggleswitch()
+          //ScanPage()
+          Flutterb(),
+        ],
       ),
     );
   }

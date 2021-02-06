@@ -94,12 +94,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
 Widget myWidget(AsyncSnapshot<dynamic> snapshot, int index) {
   print("object");
+  print(snapshot.data[index].device.name);
 
   //print("Name: ${snapshot.data[index].device.name}");
   //return Text(snapshot.data[index].device.name.toString());
+
   if (snapshot.hasData) {
     print(snapshot.data);
     print(snapshot.data[index].device.id);
+
     return Padding(
       padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
       child: Container(

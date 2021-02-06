@@ -21,13 +21,11 @@ class _ToggleswitchState extends State<Toggleswitch> {
   // Track the Bluetooth connection with the remote device
   BluetoothConnection connection;
 
-  String _address = "...";
-
   // To track whether the device is still connected to Bluetooth
   bool get isConnected => connection != null && connection.isConnected;
   // enable and disable scan device button
   bool isButtonDisabled = false;
-  int _deviceState;
+
   // Define a new class member variable
 // for storing the devices list
 
@@ -59,9 +57,9 @@ class _ToggleswitchState extends State<Toggleswitch> {
 
       var subscription = _bluetoothfb.scanResults.listen((results) {
         for (fb.ScanResult r in results) {
-          rssiList.add(r.rssi);
           print(
-              'This is from startStop ${r.device.name} found! rssi: ${r.rssi} and device added : ${rssiList.length}');
+              'This is from startStop ${r.device.name} found! rssi: ${r.device.hashCode} and device added : ${r.advertisementData.localName}');
+          // ${scanResult.advertisementData.localName}
         }
       });
     }
@@ -79,7 +77,7 @@ class _ToggleswitchState extends State<Toggleswitch> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _deviceState = 0;
+    // _deviceState = 0;
     // checkblueToothState();
     _bluetooth.state.then((state) {
       setState(() {
@@ -253,9 +251,10 @@ Widget myWidget(AsyncSnapshot<dynamic> snapshot, int index) {
   //print("Name: ${snapshot.data[index].device.name}");
   //return Text(snapshot.data[index].device.name.toString());
   if (snapshot.hasData) {
-    print(snapshot.data);
-    //print(snapshot.data[index].device.id);
-    print(snapshot.data[index].rssi);
+    // print('localName: ${scanResult.advertisementData.localName}');
+    // print(snapshot.data);
+    print(snapshot.data[index].device.toString());
+    print(snapshot.data[index]);
     return Padding(
       padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
       child: Container(
